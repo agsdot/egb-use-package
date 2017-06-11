@@ -2,23 +2,39 @@ Combine el-get-bundle with use-package.
 
 Add the ability to add :features to incorate an el-get-bundle parameter. Add the ability to add :pkgname when the el-get rcp name differs from the use-package name.
 
-For example
+Below are some examples and optimizations:
 
+Before
+#+BEGIN_SRC emacs-lisp
+(el-get-bundle swiper
+  :features ivy)
+(use-package ivy
+  :config
+... )
+
+(el-get-bundle emacs-pug-mode)
+(use-package pug-mode
+  :config
+... )
+#+END_SRC
+
+After
 #+BEGIN_SRC emacs-lisp
 (egb-use-package swiper
   :features ivy
   :pkgname ivy
   :config
 ... )
-#+END_SRC
 
-or
-
-#+BEGIN_SRC emacs-lisp
 (egb-use-package emacs-pug-mode
   :pkgname pug-mode
   :config
 ... )
 #+END_SRC
+
+The following packages were where some inspiration from the code came from:
+  - [[https://github.com/jwiegley/use-package][use-package]]
+  - [[https://github.com/edvorg/req-package][req-package]]
+  - [[https://github.com/jaccarmac/quse-package][quse-package]]
 
 Enjoy.
